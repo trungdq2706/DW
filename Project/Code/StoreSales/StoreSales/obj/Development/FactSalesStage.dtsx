@@ -1,0 +1,2535 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/2/2023 10:59:37 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LAPTOP-MB5F72F2"
+  DTS:CreatorName="LAPTOP-MB5F72F2\ASUS"
+  DTS:DTSID="{208203F1-0126-4499-B43A-ABE765711D5C}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5035.3"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="16"
+  DTS:VersionGUID="{03CD5DF5-F8CB-4D53-A2FF-80705D3C7AE0}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{A305699B-1940-48E6-BE6F-251504EB205B}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=D:\SV3_2\Data warehouse\Project\FinalProject\Usage_Data\DataCoSupplyChainDataset.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LAPTOP-MB5F72F2\SQLEXPRESS.ETL_GlobalSS]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{F226DE1F-2840-4C11-9F9B-92E2A936602E}"
+      DTS:ObjectName="LAPTOP-MB5F72F2\SQLEXPRESS.ETL_GlobalSS">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=LAPTOP-MB5F72F2\SQLEXPRESS;Initial Catalog=ETL_GlobalSS;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LAPTOP-MB5F72F2\SQLEXPRESS.ETL_GlobalSS 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{454811D2-AC8C-454C-83EB-F6BD4E84C78F}"
+      DTS:ObjectName="LAPTOP-MB5F72F2\SQLEXPRESS.ETL_GlobalSS 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=LAPTOP-MB5F72F2\SQLEXPRESS;Initial Catalog=ETL_GlobalSS;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LAPTOP-MB5F72F2\SQLEXPRESS.ETL_GlobalSS 2]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{6DC2BC1E-7E71-48BB-99AA-AC1864532FB4}"
+      DTS:ObjectName="LAPTOP-MB5F72F2\SQLEXPRESS.ETL_GlobalSS 2">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=LAPTOP-MB5F72F2\SQLEXPRESS;Initial Catalog=ETL_GlobalSS;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\FactSalesStage"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{5ECC9FDC-5699-4732-A352-A8995A4E5A7F}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="FactSalesStage"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\FactSalesStage\Aggregate"
+              componentClassID="Microsoft.Aggregate"
+              contactInfo="Aggregate;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
+              description="Aggregates data with functions such as Average, Sum, Count, Max, and Min. For example, group data to compute the sum of sales per product or the average visits per day."
+              name="Aggregate"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                  name="KeyScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                  name="Keys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of distinct values in a column that the aggregation counts distinctly. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no CountDistinctScale value is used."
+                  name="CountDistinctScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of distinct values in a column that the aggregation counts distinctly. If a CountDistinctScale value is specified, the value in CountDistinctKeys takes precedence."
+                  name="CountDistinctKeys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage by which memory can be extended during the aggregation. Valid values are between 1 and 100."
+                  name="AutoExtendFactor">25</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\FactSalesStage\Aggregate.Inputs[Aggregate Input 1]"
+                  name="Aggregate Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\FactSalesStage\Aggregate.Inputs[Aggregate Input 1].Columns[OrderID]"
+                      cachedDataType="r8"
+                      cachedName="OrderID"
+                      lineageId="Package\FactSalesStage\Derived Column.Outputs[Derived Column Output].Columns[OrderID]" />
+                    <inputColumn
+                      refId="Package\FactSalesStage\Aggregate.Inputs[Aggregate Input 1].Columns[ProductID]"
+                      cachedDataType="r8"
+                      cachedName="ProductID"
+                      lineageId="Package\FactSalesStage\Derived Column.Outputs[Derived Column Output].Columns[ProductID]" />
+                    <inputColumn
+                      refId="Package\FactSalesStage\Aggregate.Inputs[Aggregate Input 1].Columns[CustomerID]"
+                      cachedDataType="r8"
+                      cachedName="CustomerID"
+                      lineageId="Package\FactSalesStage\Derived Column.Outputs[Derived Column Output].Columns[CustomerID]" />
+                    <inputColumn
+                      refId="Package\FactSalesStage\Aggregate.Inputs[Aggregate Input 1].Columns[Price]"
+                      cachedDataType="r8"
+                      cachedName="Price"
+                      lineageId="Package\FactSalesStage\Derived Column.Outputs[Derived Column Output].Columns[Price]" />
+                    <inputColumn
+                      refId="Package\FactSalesStage\Aggregate.Inputs[Aggregate Input 1].Columns[Quantity]"
+                      cachedDataType="r8"
+                      cachedName="Quantity"
+                      lineageId="Package\FactSalesStage\Derived Column.Outputs[Derived Column Output].Columns[Quantity]" />
+                    <inputColumn
+                      refId="Package\FactSalesStage\Aggregate.Inputs[Aggregate Input 1].Columns[ExtendedPriceAmount]"
+                      cachedDataType="r8"
+                      cachedName="ExtendedPriceAmount"
+                      lineageId="Package\FactSalesStage\Derived Column.Outputs[Derived Column Output].Columns[ExtendedPriceAmount]" />
+                    <inputColumn
+                      refId="Package\FactSalesStage\Aggregate.Inputs[Aggregate Input 1].Columns[DiscountAmount]"
+                      cachedDataType="r8"
+                      cachedName="DiscountAmount"
+                      lineageId="Package\FactSalesStage\Derived Column.Outputs[Derived Column Output].Columns[DiscountAmount]" />
+                    <inputColumn
+                      refId="Package\FactSalesStage\Aggregate.Inputs[Aggregate Input 1].Columns[SoldAmount]"
+                      cachedDataType="r8"
+                      cachedName="SoldAmount"
+                      lineageId="Package\FactSalesStage\Derived Column.Outputs[Derived Column Output].Columns[SoldAmount]" />
+                    <inputColumn
+                      refId="Package\FactSalesStage\Aggregate.Inputs[Aggregate Input 1].Columns[OrderDate]"
+                      cachedDataType="date"
+                      cachedName="OrderDate"
+                      lineageId="Package\FactSalesStage\Derived Column.Outputs[Derived Column Output].Columns[OrderDate]" />
+                    <inputColumn
+                      refId="Package\FactSalesStage\Aggregate.Inputs[Aggregate Input 1].Columns[DepartmentID]"
+                      cachedDataType="r8"
+                      cachedName="DepartmentID"
+                      lineageId="Package\FactSalesStage\Derived Column.Outputs[Derived Column Output].Columns[DepartmentID]" />
+                    <inputColumn
+                      refId="Package\FactSalesStage\Aggregate.Inputs[Aggregate Input 1].Columns[LatitudeDepartment]"
+                      cachedDataType="r8"
+                      cachedName="LatitudeDepartment"
+                      lineageId="Package\FactSalesStage\Derived Column.Outputs[Derived Column Output].Columns[LatitudeDepartment]" />
+                    <inputColumn
+                      refId="Package\FactSalesStage\Aggregate.Inputs[Aggregate Input 1].Columns[LongitudeDepartment]"
+                      cachedDataType="r8"
+                      cachedName="LongitudeDepartment"
+                      lineageId="Package\FactSalesStage\Derived Column.Outputs[Derived Column Output].Columns[LongitudeDepartment]" />
+                    <inputColumn
+                      refId="Package\FactSalesStage\Aggregate.Inputs[Aggregate Input 1].Columns[ShipDate]"
+                      cachedDataType="date"
+                      cachedName="ShipDate"
+                      lineageId="Package\FactSalesStage\Derived Column.Outputs[Derived Column Output].Columns[ShipDate]" />
+                    <inputColumn
+                      refId="Package\FactSalesStage\Aggregate.Inputs[Aggregate Input 1].Columns[OrderProfitPerOrder]"
+                      cachedDataType="r8"
+                      cachedName="OrderProfitPerOrder"
+                      lineageId="Package\FactSalesStage\Derived Column.Outputs[Derived Column Output].Columns[OrderProfitPerOrder]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\FactSalesStage\Aggregate.Outputs[Aggregate Output 1]"
+                  name="Aggregate Output 1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                      name="KeyScale"
+                      typeConverter="KeyScaleType">0</property>
+                    <property
+                      dataType="System.Null"
+                      description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                      name="Keys" />
+                  </properties>
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FactSalesStage\Aggregate.Outputs[Aggregate Output 1].Columns[OrderID]"
+                      dataType="r8"
+                      lineageId="Package\FactSalesStage\Aggregate.Outputs[Aggregate Output 1].Columns[OrderID]"
+                      name="OrderID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\FactSalesStage\Derived Column.Outputs[Derived Column Output].Columns[OrderID]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\FactSalesStage\Aggregate.Outputs[Aggregate Output 1].Columns[ProductID]"
+                      dataType="r8"
+                      lineageId="Package\FactSalesStage\Aggregate.Outputs[Aggregate Output 1].Columns[ProductID]"
+                      name="ProductID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\FactSalesStage\Derived Column.Outputs[Derived Column Output].Columns[ProductID]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\FactSalesStage\Aggregate.Outputs[Aggregate Output 1].Columns[CustomerID]"
+                      dataType="r8"
+                      lineageId="Package\FactSalesStage\Aggregate.Outputs[Aggregate Output 1].Columns[CustomerID]"
+                      name="CustomerID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\FactSalesStage\Derived Column.Outputs[Derived Column Output].Columns[CustomerID]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\FactSalesStage\Aggregate.Outputs[Aggregate Output 1].Columns[Price]"
+                      dataType="r8"
+                      lineageId="Package\FactSalesStage\Aggregate.Outputs[Aggregate Output 1].Columns[Price]"
+                      name="Price">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\FactSalesStage\Derived Column.Outputs[Derived Column Output].Columns[Price]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\FactSalesStage\Aggregate.Outputs[Aggregate Output 1].Columns[Quantity]"
+                      dataType="r8"
+                      lineageId="Package\FactSalesStage\Aggregate.Outputs[Aggregate Output 1].Columns[Quantity]"
+                      name="Quantity">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\FactSalesStage\Derived Column.Outputs[Derived Column Output].Columns[Quantity]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\FactSalesStage\Aggregate.Outputs[Aggregate Output 1].Columns[ExtendedPriceAmount]"
+                      dataType="r8"
+                      lineageId="Package\FactSalesStage\Aggregate.Outputs[Aggregate Output 1].Columns[ExtendedPriceAmount]"
+                      name="ExtendedPriceAmount">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\FactSalesStage\Derived Column.Outputs[Derived Column Output].Columns[ExtendedPriceAmount]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\FactSalesStage\Aggregate.Outputs[Aggregate Output 1].Columns[DiscountAmount]"
+                      dataType="r8"
+                      lineageId="Package\FactSalesStage\Aggregate.Outputs[Aggregate Output 1].Columns[DiscountAmount]"
+                      name="DiscountAmount">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\FactSalesStage\Derived Column.Outputs[Derived Column Output].Columns[DiscountAmount]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\FactSalesStage\Aggregate.Outputs[Aggregate Output 1].Columns[SoldAmount]"
+                      dataType="r8"
+                      lineageId="Package\FactSalesStage\Aggregate.Outputs[Aggregate Output 1].Columns[SoldAmount]"
+                      name="SoldAmount">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\FactSalesStage\Derived Column.Outputs[Derived Column Output].Columns[SoldAmount]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\FactSalesStage\Aggregate.Outputs[Aggregate Output 1].Columns[OrderDate]"
+                      dataType="date"
+                      lineageId="Package\FactSalesStage\Aggregate.Outputs[Aggregate Output 1].Columns[OrderDate]"
+                      name="OrderDate">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\FactSalesStage\Derived Column.Outputs[Derived Column Output].Columns[OrderDate]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\FactSalesStage\Aggregate.Outputs[Aggregate Output 1].Columns[DepartmentID]"
+                      dataType="r8"
+                      lineageId="Package\FactSalesStage\Aggregate.Outputs[Aggregate Output 1].Columns[DepartmentID]"
+                      name="DepartmentID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\FactSalesStage\Derived Column.Outputs[Derived Column Output].Columns[DepartmentID]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\FactSalesStage\Aggregate.Outputs[Aggregate Output 1].Columns[LatitudeDepartment]"
+                      dataType="r8"
+                      lineageId="Package\FactSalesStage\Aggregate.Outputs[Aggregate Output 1].Columns[LatitudeDepartment]"
+                      name="LatitudeDepartment">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\FactSalesStage\Derived Column.Outputs[Derived Column Output].Columns[LatitudeDepartment]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\FactSalesStage\Aggregate.Outputs[Aggregate Output 1].Columns[LongitudeDepartment]"
+                      dataType="r8"
+                      lineageId="Package\FactSalesStage\Aggregate.Outputs[Aggregate Output 1].Columns[LongitudeDepartment]"
+                      name="LongitudeDepartment">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\FactSalesStage\Derived Column.Outputs[Derived Column Output].Columns[LongitudeDepartment]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\FactSalesStage\Aggregate.Outputs[Aggregate Output 1].Columns[ShipDate]"
+                      dataType="date"
+                      lineageId="Package\FactSalesStage\Aggregate.Outputs[Aggregate Output 1].Columns[ShipDate]"
+                      name="ShipDate">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\FactSalesStage\Derived Column.Outputs[Derived Column Output].Columns[ShipDate]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\FactSalesStage\Aggregate.Outputs[Aggregate Output 1].Columns[OrderProfitPerOrder]"
+                      dataType="r8"
+                      lineageId="Package\FactSalesStage\Aggregate.Outputs[Aggregate Output 1].Columns[OrderProfitPerOrder]"
+                      name="OrderProfitPerOrder">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\FactSalesStage\Derived Column.Outputs[Derived Column Output].Columns[OrderProfitPerOrder]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\FactSalesStage\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\FactSalesStage\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\FactSalesStage\Derived Column.Inputs[Derived Column Input].Columns[Customer Id]"
+                      cachedDataType="r8"
+                      cachedName="Customer Id"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Customer Id]" />
+                    <inputColumn
+                      refId="Package\FactSalesStage\Derived Column.Inputs[Derived Column Input].Columns[order date (DateOrders)]"
+                      cachedDataType="date"
+                      cachedName="order date (DateOrders)"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[order date (DateOrders)]" />
+                    <inputColumn
+                      refId="Package\FactSalesStage\Derived Column.Inputs[Derived Column Input].Columns[Order Id]"
+                      cachedDataType="r8"
+                      cachedName="Order Id"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Order Id]" />
+                    <inputColumn
+                      refId="Package\FactSalesStage\Derived Column.Inputs[Derived Column Input].Columns[Order Item Discount]"
+                      cachedDataType="r8"
+                      cachedName="Order Item Discount"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Order Item Discount]" />
+                    <inputColumn
+                      refId="Package\FactSalesStage\Derived Column.Inputs[Derived Column Input].Columns[Order Item Product Price]"
+                      cachedDataType="r8"
+                      cachedName="Order Item Product Price"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Order Item Product Price]" />
+                    <inputColumn
+                      refId="Package\FactSalesStage\Derived Column.Inputs[Derived Column Input].Columns[Order Item Quantity]"
+                      cachedDataType="r8"
+                      cachedName="Order Item Quantity"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Order Item Quantity]" />
+                    <inputColumn
+                      refId="Package\FactSalesStage\Derived Column.Inputs[Derived Column Input].Columns[Sales]"
+                      cachedDataType="r8"
+                      cachedName="Sales"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Sales]" />
+                    <inputColumn
+                      refId="Package\FactSalesStage\Derived Column.Inputs[Derived Column Input].Columns[Order Item Total]"
+                      cachedDataType="r8"
+                      cachedName="Order Item Total"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Order Item Total]" />
+                    <inputColumn
+                      refId="Package\FactSalesStage\Derived Column.Inputs[Derived Column Input].Columns[Department Id]"
+                      cachedDataType="r8"
+                      cachedName="Department Id"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Department Id]" />
+                    <inputColumn
+                      refId="Package\FactSalesStage\Derived Column.Inputs[Derived Column Input].Columns[Product Card Id]"
+                      cachedDataType="r8"
+                      cachedName="Product Card Id"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Product Card Id]" />
+                    <inputColumn
+                      refId="Package\FactSalesStage\Derived Column.Inputs[Derived Column Input].Columns[Latitude]"
+                      cachedDataType="r8"
+                      cachedName="Latitude"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Latitude]" />
+                    <inputColumn
+                      refId="Package\FactSalesStage\Derived Column.Inputs[Derived Column Input].Columns[Longitude]"
+                      cachedDataType="r8"
+                      cachedName="Longitude"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Longitude]" />
+                    <inputColumn
+                      refId="Package\FactSalesStage\Derived Column.Inputs[Derived Column Input].Columns[shipping date (DateOrders)]"
+                      cachedDataType="date"
+                      cachedName="shipping date (DateOrders)"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[shipping date (DateOrders)]" />
+                    <inputColumn
+                      refId="Package\FactSalesStage\Derived Column.Inputs[Derived Column Input].Columns[Order Profit Per Order]"
+                      cachedDataType="r8"
+                      cachedName="Order Profit Per Order"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Order Profit Per Order]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\FactSalesStage\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\FactSalesStage\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FactSalesStage\Derived Column.Outputs[Derived Column Output].Columns[OrderID]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\FactSalesStage\Derived Column.Outputs[Derived Column Output].Columns[OrderID]"
+                      name="OrderID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Order Id]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">[Order Id]</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\FactSalesStage\Derived Column.Outputs[Derived Column Output].Columns[ProductID]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\FactSalesStage\Derived Column.Outputs[Derived Column Output].Columns[ProductID]"
+                      name="ProductID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Product Card Id]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">[Product Card Id]</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\FactSalesStage\Derived Column.Outputs[Derived Column Output].Columns[CustomerID]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\FactSalesStage\Derived Column.Outputs[Derived Column Output].Columns[CustomerID]"
+                      name="CustomerID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Customer Id]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">[Customer Id]</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\FactSalesStage\Derived Column.Outputs[Derived Column Output].Columns[Price]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\FactSalesStage\Derived Column.Outputs[Derived Column Output].Columns[Price]"
+                      name="Price"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Order Item Product Price]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">[Order Item Product Price]</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\FactSalesStage\Derived Column.Outputs[Derived Column Output].Columns[Quantity]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\FactSalesStage\Derived Column.Outputs[Derived Column Output].Columns[Quantity]"
+                      name="Quantity"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Order Item Quantity]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">[Order Item Quantity]</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\FactSalesStage\Derived Column.Outputs[Derived Column Output].Columns[ExtendedPriceAmount]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\FactSalesStage\Derived Column.Outputs[Derived Column Output].Columns[ExtendedPriceAmount]"
+                      name="ExtendedPriceAmount"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Sales]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">Sales</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\FactSalesStage\Derived Column.Outputs[Derived Column Output].Columns[DiscountAmount]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\FactSalesStage\Derived Column.Outputs[Derived Column Output].Columns[DiscountAmount]"
+                      name="DiscountAmount"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Order Item Discount]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">[Order Item Discount]</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\FactSalesStage\Derived Column.Outputs[Derived Column Output].Columns[SoldAmount]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\FactSalesStage\Derived Column.Outputs[Derived Column Output].Columns[SoldAmount]"
+                      name="SoldAmount"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Order Item Total]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">[Order Item Total]</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\FactSalesStage\Derived Column.Outputs[Derived Column Output].Columns[OrderDate]"
+                      dataType="date"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\FactSalesStage\Derived Column.Outputs[Derived Column Output].Columns[OrderDate]"
+                      name="OrderDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[order date (DateOrders)]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">[order date (DateOrders)]</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\FactSalesStage\Derived Column.Outputs[Derived Column Output].Columns[DepartmentID]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\FactSalesStage\Derived Column.Outputs[Derived Column Output].Columns[DepartmentID]"
+                      name="DepartmentID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Department Id]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">[Department Id]</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\FactSalesStage\Derived Column.Outputs[Derived Column Output].Columns[LatitudeDepartment]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\FactSalesStage\Derived Column.Outputs[Derived Column Output].Columns[LatitudeDepartment]"
+                      name="LatitudeDepartment"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Latitude]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">Latitude</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\FactSalesStage\Derived Column.Outputs[Derived Column Output].Columns[LongitudeDepartment]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\FactSalesStage\Derived Column.Outputs[Derived Column Output].Columns[LongitudeDepartment]"
+                      name="LongitudeDepartment"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Longitude]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">Longitude</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\FactSalesStage\Derived Column.Outputs[Derived Column Output].Columns[ShipDate]"
+                      dataType="date"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\FactSalesStage\Derived Column.Outputs[Derived Column Output].Columns[ShipDate]"
+                      name="ShipDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[shipping date (DateOrders)]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">[shipping date (DateOrders)]</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\FactSalesStage\Derived Column.Outputs[Derived Column Output].Columns[OrderProfitPerOrder]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\FactSalesStage\Derived Column.Outputs[Derived Column Output].Columns[OrderProfitPerOrder]"
+                      name="OrderProfitPerOrder"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Order Profit Per Order]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">[Order Profit Per Order]</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\FactSalesStage\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\FactSalesStage\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FactSalesStage\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\FactSalesStage\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\FactSalesStage\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\FactSalesStage\Excel Source"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Excel Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">new$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\FactSalesStage\Excel Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[F1]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[F1]"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[F1]"
+                      name="F1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Type]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Type]"
+                      length="255"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Type]"
+                      name="Type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Days for shipping (real)]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Days for shipping (real)]"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Days for shipping (real)]"
+                      name="Days for shipping (real)"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Days for shipment (scheduled)]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Days for shipment (scheduled)]"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Days for shipment (scheduled)]"
+                      name="Days for shipment (scheduled)"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Benefit per order]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Benefit per order]"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Benefit per order]"
+                      name="Benefit per order"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Sales per customer]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Sales per customer]"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Sales per customer]"
+                      name="Sales per customer"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Delivery Status]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Delivery Status]"
+                      length="255"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Delivery Status]"
+                      name="Delivery Status"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Late_delivery_risk]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Late_delivery_risk]"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Late_delivery_risk]"
+                      name="Late_delivery_risk"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Category Id]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Category Id]"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Category Id]"
+                      name="Category Id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Category Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Category Name]"
+                      length="255"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Category Name]"
+                      name="Category Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Customer City]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Customer City]"
+                      length="255"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Customer City]"
+                      name="Customer City"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Customer Country]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Customer Country]"
+                      length="255"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Customer Country]"
+                      name="Customer Country"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Customer Email]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Customer Email]"
+                      length="255"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Customer Email]"
+                      name="Customer Email"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Customer Fname]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Customer Fname]"
+                      length="255"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Customer Fname]"
+                      name="Customer Fname"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Customer Id]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Customer Id]"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Customer Id]"
+                      name="Customer Id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Customer Lname]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Customer Lname]"
+                      length="255"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Customer Lname]"
+                      name="Customer Lname"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Customer Password]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Customer Password]"
+                      length="255"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Customer Password]"
+                      name="Customer Password"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Customer Segment]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Customer Segment]"
+                      length="255"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Customer Segment]"
+                      name="Customer Segment"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Customer State]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Customer State]"
+                      length="255"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Customer State]"
+                      name="Customer State"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Customer Street]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Customer Street]"
+                      length="255"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Customer Street]"
+                      name="Customer Street"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Customer Zipcode]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Customer Zipcode]"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Customer Zipcode]"
+                      name="Customer Zipcode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Department Id]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Department Id]"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Department Id]"
+                      name="Department Id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Department Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Department Name]"
+                      length="255"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Department Name]"
+                      name="Department Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Latitude]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Latitude]"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Latitude]"
+                      name="Latitude"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Longitude]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Longitude]"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Longitude]"
+                      name="Longitude"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Market]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Market]"
+                      length="255"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Market]"
+                      name="Market"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Order City]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order City]"
+                      length="255"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Order City]"
+                      name="Order City"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Order Country]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order Country]"
+                      length="255"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Order Country]"
+                      name="Order Country"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Order Customer Id]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order Customer Id]"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Order Customer Id]"
+                      name="Order Customer Id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[order date (DateOrders)]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[order date (DateOrders)]"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[order date (DateOrders)]"
+                      name="order date (DateOrders)"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Order Id]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order Id]"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Order Id]"
+                      name="Order Id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Order Item Cardprod Id]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order Item Cardprod Id]"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Order Item Cardprod Id]"
+                      name="Order Item Cardprod Id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Order Item Discount]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order Item Discount]"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Order Item Discount]"
+                      name="Order Item Discount"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Order Item Discount Rate]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order Item Discount Rate]"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Order Item Discount Rate]"
+                      name="Order Item Discount Rate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Order Item Id]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order Item Id]"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Order Item Id]"
+                      name="Order Item Id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Order Item Product Price]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order Item Product Price]"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Order Item Product Price]"
+                      name="Order Item Product Price"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Order Item Profit Ratio]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order Item Profit Ratio]"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Order Item Profit Ratio]"
+                      name="Order Item Profit Ratio"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Order Item Quantity]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order Item Quantity]"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Order Item Quantity]"
+                      name="Order Item Quantity"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Sales]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Sales]"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Sales]"
+                      name="Sales"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Order Item Total]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order Item Total]"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Order Item Total]"
+                      name="Order Item Total"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Order Profit Per Order]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order Profit Per Order]"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Order Profit Per Order]"
+                      name="Order Profit Per Order"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Order Region]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order Region]"
+                      length="255"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Order Region]"
+                      name="Order Region"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Order State]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order State]"
+                      length="255"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Order State]"
+                      name="Order State"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Order Status]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order Status]"
+                      length="255"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Order Status]"
+                      name="Order Status"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Order Zipcode]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order Zipcode]"
+                      length="255"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Order Zipcode]"
+                      name="Order Zipcode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Product Card Id]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Product Card Id]"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Product Card Id]"
+                      name="Product Card Id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Product Category Id]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Product Category Id]"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Product Category Id]"
+                      name="Product Category Id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Product Description]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Product Description]"
+                      length="255"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Product Description]"
+                      name="Product Description"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Product Image]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Product Image]"
+                      length="255"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Product Image]"
+                      name="Product Image"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Product Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Product Name]"
+                      length="255"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Product Name]"
+                      name="Product Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Product Price]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Product Price]"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Product Price]"
+                      name="Product Price"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Product Status]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Product Status]"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Product Status]"
+                      name="Product Status"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[shipping date (DateOrders)]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[shipping date (DateOrders)]"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[shipping date (DateOrders)]"
+                      name="shipping date (DateOrders)"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Shipping Mode]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Shipping Mode]"
+                      length="255"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].Columns[Shipping Mode]"
+                      name="Shipping Mode"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[F1]"
+                      dataType="r8"
+                      name="F1" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Type]"
+                      dataType="wstr"
+                      length="255"
+                      name="Type" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Days for shipping (real)]"
+                      dataType="r8"
+                      name="Days for shipping (real)" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Days for shipment (scheduled)]"
+                      dataType="r8"
+                      name="Days for shipment (scheduled)" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Benefit per order]"
+                      dataType="r8"
+                      name="Benefit per order" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Sales per customer]"
+                      dataType="r8"
+                      name="Sales per customer" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Delivery Status]"
+                      dataType="wstr"
+                      length="255"
+                      name="Delivery Status" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Late_delivery_risk]"
+                      dataType="r8"
+                      name="Late_delivery_risk" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Category Id]"
+                      dataType="r8"
+                      name="Category Id" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Category Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Category Name" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Customer City]"
+                      dataType="wstr"
+                      length="255"
+                      name="Customer City" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Customer Country]"
+                      dataType="wstr"
+                      length="255"
+                      name="Customer Country" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Customer Email]"
+                      dataType="wstr"
+                      length="255"
+                      name="Customer Email" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Customer Fname]"
+                      dataType="wstr"
+                      length="255"
+                      name="Customer Fname" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Customer Id]"
+                      dataType="r8"
+                      name="Customer Id" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Customer Lname]"
+                      dataType="wstr"
+                      length="255"
+                      name="Customer Lname" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Customer Password]"
+                      dataType="wstr"
+                      length="255"
+                      name="Customer Password" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Customer Segment]"
+                      dataType="wstr"
+                      length="255"
+                      name="Customer Segment" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Customer State]"
+                      dataType="wstr"
+                      length="255"
+                      name="Customer State" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Customer Street]"
+                      dataType="wstr"
+                      length="255"
+                      name="Customer Street" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Customer Zipcode]"
+                      dataType="r8"
+                      name="Customer Zipcode" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Department Id]"
+                      dataType="r8"
+                      name="Department Id" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Department Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Department Name" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Latitude]"
+                      dataType="r8"
+                      name="Latitude" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Longitude]"
+                      dataType="r8"
+                      name="Longitude" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Market]"
+                      dataType="wstr"
+                      length="255"
+                      name="Market" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order City]"
+                      dataType="wstr"
+                      length="255"
+                      name="Order City" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order Country]"
+                      dataType="wstr"
+                      length="255"
+                      name="Order Country" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order Customer Id]"
+                      dataType="r8"
+                      name="Order Customer Id" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[order date (DateOrders)]"
+                      dataType="date"
+                      name="order date (DateOrders)" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order Id]"
+                      dataType="r8"
+                      name="Order Id" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order Item Cardprod Id]"
+                      dataType="r8"
+                      name="Order Item Cardprod Id" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order Item Discount]"
+                      dataType="r8"
+                      name="Order Item Discount" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order Item Discount Rate]"
+                      dataType="r8"
+                      name="Order Item Discount Rate" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order Item Id]"
+                      dataType="r8"
+                      name="Order Item Id" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order Item Product Price]"
+                      dataType="r8"
+                      name="Order Item Product Price" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order Item Profit Ratio]"
+                      dataType="r8"
+                      name="Order Item Profit Ratio" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order Item Quantity]"
+                      dataType="r8"
+                      name="Order Item Quantity" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Sales]"
+                      dataType="r8"
+                      name="Sales" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order Item Total]"
+                      dataType="r8"
+                      name="Order Item Total" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order Profit Per Order]"
+                      dataType="r8"
+                      name="Order Profit Per Order" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order Region]"
+                      dataType="wstr"
+                      length="255"
+                      name="Order Region" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order State]"
+                      dataType="wstr"
+                      length="255"
+                      name="Order State" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order Status]"
+                      dataType="wstr"
+                      length="255"
+                      name="Order Status" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order Zipcode]"
+                      dataType="wstr"
+                      length="255"
+                      name="Order Zipcode" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Product Card Id]"
+                      dataType="r8"
+                      name="Product Card Id" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Product Category Id]"
+                      dataType="r8"
+                      name="Product Category Id" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Product Description]"
+                      dataType="wstr"
+                      length="255"
+                      name="Product Description" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Product Image]"
+                      dataType="wstr"
+                      length="255"
+                      name="Product Image" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Product Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Product Name" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Product Price]"
+                      dataType="r8"
+                      name="Product Price" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Product Status]"
+                      dataType="r8"
+                      name="Product Status" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[shipping date (DateOrders)]"
+                      dataType="date"
+                      name="shipping date (DateOrders)" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Shipping Mode]"
+                      dataType="wstr"
+                      length="255"
+                      name="Shipping Mode" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[F1]"
+                      dataType="r8"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[F1]"
+                      name="F1" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Type]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Type]"
+                      name="Type" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Days for shipping (real)]"
+                      dataType="r8"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Days for shipping (real)]"
+                      name="Days for shipping (real)" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Days for shipment (scheduled)]"
+                      dataType="r8"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Days for shipment (scheduled)]"
+                      name="Days for shipment (scheduled)" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Benefit per order]"
+                      dataType="r8"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Benefit per order]"
+                      name="Benefit per order" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Sales per customer]"
+                      dataType="r8"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Sales per customer]"
+                      name="Sales per customer" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Delivery Status]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Delivery Status]"
+                      name="Delivery Status" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Late_delivery_risk]"
+                      dataType="r8"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Late_delivery_risk]"
+                      name="Late_delivery_risk" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Category Id]"
+                      dataType="r8"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Category Id]"
+                      name="Category Id" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Category Name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Category Name]"
+                      name="Category Name" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Customer City]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Customer City]"
+                      name="Customer City" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Customer Country]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Customer Country]"
+                      name="Customer Country" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Customer Email]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Customer Email]"
+                      name="Customer Email" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Customer Fname]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Customer Fname]"
+                      name="Customer Fname" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Customer Id]"
+                      dataType="r8"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Customer Id]"
+                      name="Customer Id" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Customer Lname]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Customer Lname]"
+                      name="Customer Lname" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Customer Password]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Customer Password]"
+                      name="Customer Password" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Customer Segment]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Customer Segment]"
+                      name="Customer Segment" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Customer State]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Customer State]"
+                      name="Customer State" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Customer Street]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Customer Street]"
+                      name="Customer Street" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Customer Zipcode]"
+                      dataType="r8"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Customer Zipcode]"
+                      name="Customer Zipcode" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Department Id]"
+                      dataType="r8"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Department Id]"
+                      name="Department Id" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Department Name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Department Name]"
+                      name="Department Name" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Latitude]"
+                      dataType="r8"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Latitude]"
+                      name="Latitude" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Longitude]"
+                      dataType="r8"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Longitude]"
+                      name="Longitude" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Market]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Market]"
+                      name="Market" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order City]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order City]"
+                      name="Order City" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order Country]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order Country]"
+                      name="Order Country" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order Customer Id]"
+                      dataType="r8"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order Customer Id]"
+                      name="Order Customer Id" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[order date (DateOrders)]"
+                      dataType="date"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[order date (DateOrders)]"
+                      name="order date (DateOrders)" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order Id]"
+                      dataType="r8"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order Id]"
+                      name="Order Id" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order Item Cardprod Id]"
+                      dataType="r8"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order Item Cardprod Id]"
+                      name="Order Item Cardprod Id" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order Item Discount]"
+                      dataType="r8"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order Item Discount]"
+                      name="Order Item Discount" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order Item Discount Rate]"
+                      dataType="r8"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order Item Discount Rate]"
+                      name="Order Item Discount Rate" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order Item Id]"
+                      dataType="r8"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order Item Id]"
+                      name="Order Item Id" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order Item Product Price]"
+                      dataType="r8"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order Item Product Price]"
+                      name="Order Item Product Price" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order Item Profit Ratio]"
+                      dataType="r8"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order Item Profit Ratio]"
+                      name="Order Item Profit Ratio" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order Item Quantity]"
+                      dataType="r8"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order Item Quantity]"
+                      name="Order Item Quantity" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Sales]"
+                      dataType="r8"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Sales]"
+                      name="Sales" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order Item Total]"
+                      dataType="r8"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order Item Total]"
+                      name="Order Item Total" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order Profit Per Order]"
+                      dataType="r8"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order Profit Per Order]"
+                      name="Order Profit Per Order" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order Region]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order Region]"
+                      name="Order Region" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order State]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order State]"
+                      name="Order State" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order Status]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order Status]"
+                      name="Order Status" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order Zipcode]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order Zipcode]"
+                      name="Order Zipcode" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Product Card Id]"
+                      dataType="r8"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Product Card Id]"
+                      name="Product Card Id" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Product Category Id]"
+                      dataType="r8"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Product Category Id]"
+                      name="Product Category Id" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Product Description]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Product Description]"
+                      name="Product Description" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Product Image]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Product Image]"
+                      name="Product Image" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Product Name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Product Name]"
+                      name="Product Name" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Product Price]"
+                      dataType="r8"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Product Price]"
+                      name="Product Price" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Product Status]"
+                      dataType="r8"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Product Status]"
+                      name="Product Status" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[shipping date (DateOrders)]"
+                      dataType="date"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[shipping date (DateOrders)]"
+                      name="shipping date (DateOrders)" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Shipping Mode]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[Shipping Mode]"
+                      name="Shipping Mode" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\FactSalesStage\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[FactSalesStage]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\FactSalesStage\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-MB5F72F2\SQLEXPRESS.ETL_GlobalSS 2]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-MB5F72F2\SQLEXPRESS.ETL_GlobalSS 2]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\FactSalesStage\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\FactSalesStage\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[OrderID]"
+                      cachedDataType="r8"
+                      cachedName="OrderID"
+                      externalMetadataColumnId="Package\FactSalesStage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OrderID]"
+                      lineageId="Package\FactSalesStage\Aggregate.Outputs[Aggregate Output 1].Columns[OrderID]" />
+                    <inputColumn
+                      refId="Package\FactSalesStage\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ProductID]"
+                      cachedDataType="r8"
+                      cachedName="ProductID"
+                      externalMetadataColumnId="Package\FactSalesStage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
+                      lineageId="Package\FactSalesStage\Aggregate.Outputs[Aggregate Output 1].Columns[ProductID]" />
+                    <inputColumn
+                      refId="Package\FactSalesStage\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CustomerID]"
+                      cachedDataType="r8"
+                      cachedName="CustomerID"
+                      externalMetadataColumnId="Package\FactSalesStage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerID]"
+                      lineageId="Package\FactSalesStage\Aggregate.Outputs[Aggregate Output 1].Columns[CustomerID]" />
+                    <inputColumn
+                      refId="Package\FactSalesStage\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Price]"
+                      cachedDataType="r8"
+                      cachedName="Price"
+                      externalMetadataColumnId="Package\FactSalesStage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Price]"
+                      lineageId="Package\FactSalesStage\Aggregate.Outputs[Aggregate Output 1].Columns[Price]" />
+                    <inputColumn
+                      refId="Package\FactSalesStage\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Quantity]"
+                      cachedDataType="r8"
+                      cachedName="Quantity"
+                      externalMetadataColumnId="Package\FactSalesStage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Quantity]"
+                      lineageId="Package\FactSalesStage\Aggregate.Outputs[Aggregate Output 1].Columns[Quantity]" />
+                    <inputColumn
+                      refId="Package\FactSalesStage\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ExtendedPriceAmount]"
+                      cachedDataType="r8"
+                      cachedName="ExtendedPriceAmount"
+                      externalMetadataColumnId="Package\FactSalesStage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ExtendedPriceAmount]"
+                      lineageId="Package\FactSalesStage\Aggregate.Outputs[Aggregate Output 1].Columns[ExtendedPriceAmount]" />
+                    <inputColumn
+                      refId="Package\FactSalesStage\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DiscountAmount]"
+                      cachedDataType="r8"
+                      cachedName="DiscountAmount"
+                      externalMetadataColumnId="Package\FactSalesStage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DiscountAmount]"
+                      lineageId="Package\FactSalesStage\Aggregate.Outputs[Aggregate Output 1].Columns[DiscountAmount]" />
+                    <inputColumn
+                      refId="Package\FactSalesStage\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[SoldAmount]"
+                      cachedDataType="r8"
+                      cachedName="SoldAmount"
+                      externalMetadataColumnId="Package\FactSalesStage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SoldAmount]"
+                      lineageId="Package\FactSalesStage\Aggregate.Outputs[Aggregate Output 1].Columns[SoldAmount]" />
+                    <inputColumn
+                      refId="Package\FactSalesStage\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[OrderDate]"
+                      cachedDataType="date"
+                      cachedName="OrderDate"
+                      externalMetadataColumnId="Package\FactSalesStage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OrderDate]"
+                      lineageId="Package\FactSalesStage\Aggregate.Outputs[Aggregate Output 1].Columns[OrderDate]" />
+                    <inputColumn
+                      refId="Package\FactSalesStage\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DepartmentID]"
+                      cachedDataType="r8"
+                      cachedName="DepartmentID"
+                      externalMetadataColumnId="Package\FactSalesStage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DepartmentID]"
+                      lineageId="Package\FactSalesStage\Aggregate.Outputs[Aggregate Output 1].Columns[DepartmentID]" />
+                    <inputColumn
+                      refId="Package\FactSalesStage\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[LatitudeDepartment]"
+                      cachedDataType="r8"
+                      cachedName="LatitudeDepartment"
+                      externalMetadataColumnId="Package\FactSalesStage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LatitudeDepartment]"
+                      lineageId="Package\FactSalesStage\Aggregate.Outputs[Aggregate Output 1].Columns[LatitudeDepartment]" />
+                    <inputColumn
+                      refId="Package\FactSalesStage\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[LongitudeDepartment]"
+                      cachedDataType="r8"
+                      cachedName="LongitudeDepartment"
+                      externalMetadataColumnId="Package\FactSalesStage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LongitudeDepartment]"
+                      lineageId="Package\FactSalesStage\Aggregate.Outputs[Aggregate Output 1].Columns[LongitudeDepartment]" />
+                    <inputColumn
+                      refId="Package\FactSalesStage\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ShipDate]"
+                      cachedDataType="date"
+                      cachedName="ShipDate"
+                      externalMetadataColumnId="Package\FactSalesStage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ShipDate]"
+                      lineageId="Package\FactSalesStage\Aggregate.Outputs[Aggregate Output 1].Columns[ShipDate]" />
+                    <inputColumn
+                      refId="Package\FactSalesStage\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[OrderProfitPerOrder]"
+                      cachedDataType="r8"
+                      cachedName="OrderProfitPerOrder"
+                      externalMetadataColumnId="Package\FactSalesStage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OrderProfitPerOrder]"
+                      lineageId="Package\FactSalesStage\Aggregate.Outputs[Aggregate Output 1].Columns[OrderProfitPerOrder]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OrderID]"
+                      dataType="r8"
+                      name="OrderID" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
+                      dataType="r8"
+                      name="ProductID" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerID]"
+                      dataType="r8"
+                      name="CustomerID" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Price]"
+                      dataType="r8"
+                      name="Price" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Quantity]"
+                      dataType="r8"
+                      name="Quantity" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ExtendedPriceAmount]"
+                      dataType="r8"
+                      name="ExtendedPriceAmount" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DiscountAmount]"
+                      dataType="r8"
+                      name="DiscountAmount" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SoldAmount]"
+                      dataType="r8"
+                      name="SoldAmount" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OrderDate]"
+                      dataType="dbTimeStamp"
+                      name="OrderDate" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DepartmentID]"
+                      dataType="r8"
+                      name="DepartmentID" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LatitudeDepartment]"
+                      dataType="r8"
+                      name="LatitudeDepartment" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LongitudeDepartment]"
+                      dataType="r8"
+                      name="LongitudeDepartment" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ShipDate]"
+                      dataType="dbTimeStamp"
+                      name="ShipDate" />
+                    <externalMetadataColumn
+                      refId="Package\FactSalesStage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OrderProfitPerOrder]"
+                      dataType="r8"
+                      name="OrderProfitPerOrder" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\FactSalesStage\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\FactSalesStage\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FactSalesStage\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\FactSalesStage\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\FactSalesStage\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\FactSalesStage\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\FactSalesStage.Paths[Aggregate Output 1]"
+              endId="Package\FactSalesStage\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Aggregate Output 1"
+              startId="Package\FactSalesStage\Aggregate.Outputs[Aggregate Output 1]" />
+            <path
+              refId="Package\FactSalesStage.Paths[Derived Column Output]"
+              endId="Package\FactSalesStage\Aggregate.Inputs[Aggregate Input 1]"
+              name="Derived Column Output"
+              startId="Package\FactSalesStage\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\FactSalesStage.Paths[Excel Source Output]"
+              endId="Package\FactSalesStage\Derived Column.Inputs[Derived Column Input]"
+              name="Excel Source Output"
+              startId="Package\FactSalesStage\Excel Source.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="148.8,41.6"
+          Id="Package\FactSalesStage"
+          TopLeft="94.2857158913905,57.3529419808239" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\FactSalesStage">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\FactSalesStage\Derived Column"
+          TopLeft="219.285718020128,24.4705885784849" />
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\FactSalesStage\OLE DB Destination"
+          TopLeft="426.428578690607,140.705884326288" />
+        <NodeLayout
+          Size="126.4,41.6"
+          Id="Package\FactSalesStage\Aggregate"
+          TopLeft="442.142864672505,22.9411767923296" />
+        <NodeLayout
+          Size="138.4,41.6"
+          Id="Package\FactSalesStage\Excel Source"
+          TopLeft="24.0714288876981,25.382353220019" />
+        <EdgeLayout
+          Id="Package\FactSalesStage.Paths[Excel Source Output]"
+          TopLeft="162.471428887698,45.7264708992519">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="56.8142891324297,0"
+              Start="0,0"
+              End="49.3142891324297,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="49.3142891324297,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\FactSalesStage.Paths[Derived Column Output]"
+          TopLeft="372.085718020128,44.5058826854072">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="70.0571466523772,0"
+              Start="0,0"
+              End="62.5571466523772,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="62.5571466523772,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\FactSalesStage.Paths[Aggregate Output 1]"
+          TopLeft="508.485721681556,64.5411767923296">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,76.1647075339585"
+              Start="0,0"
+              End="0,68.6647075339585">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,68.6647075339585" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\FactSalesStage\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\FactSalesStage\Excel Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

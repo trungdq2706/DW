@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="LAPTOP-MB5F72F2_SQLEXPRESS.ETL_GlobalSS"
+  DTS:DTSID="{2C80BE86-7486-421A-A02E-AC5BD22A8711}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=LAPTOP-MB5F72F2\SQLEXPRESS;Initial Catalog=ETL_GlobalSS;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-StoreSales-{2C80BE86-7486-421A-A02E-AC5BD22A8711}LAPTOP-MB5F72F2\SQLEXPRESS.ETL_GlobalSS;Auto Translate=False;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

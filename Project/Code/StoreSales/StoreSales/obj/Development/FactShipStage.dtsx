@@ -1,0 +1,2509 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/3/2023 9:36:38 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LAPTOP-MB5F72F2"
+  DTS:CreatorName="LAPTOP-MB5F72F2\ASUS"
+  DTS:DTSID="{DEEB3412-5E7D-4664-A5A1-F27CC8228622}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5035.3"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package2"
+  DTS:PackageType="5"
+  DTS:VersionBuild="13"
+  DTS:VersionGUID="{C787905B-DF3D-4DF8-83C9-99EB25BEEF2F}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{29F32B86-A8D7-4446-AB93-917D68D05182}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=D:\SV3_2\Data warehouse\Project\FinalProject\Usage_Data\DataCoSupplyChainDataset.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager 1]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{72D432E5-B101-4464-B9CC-C254285C300F}"
+      DTS:ObjectName="Excel Connection Manager 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=D:\SV3_2\Data warehouse\Project\FinalProject\Usage_Data\DataCoSupplyChainDataset.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LAPTOP-MB5F72F2\SQLEXPRESS]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{8A039BC7-1B34-4013-9AD7-F752181A18F2}"
+      DTS:ObjectName="LAPTOP-MB5F72F2\SQLEXPRESS">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=LAPTOP-MB5F72F2\SQLEXPRESS;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LAPTOP-MB5F72F2\SQLEXPRESS.ETL_GlobalSS]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{A257D94A-A2FD-43A1-9CD8-D0A3191E765A}"
+      DTS:ObjectName="LAPTOP-MB5F72F2\SQLEXPRESS.ETL_GlobalSS">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=LAPTOP-MB5F72F2\SQLEXPRESS;Initial Catalog=ETL_GlobalSS;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LAPTOP-MB5F72F2\SQLEXPRESS.ETL_GlobalSS 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{1F6BC00B-B4E0-49D3-A131-9110301EC4C6}"
+      DTS:ObjectName="LAPTOP-MB5F72F2\SQLEXPRESS.ETL_GlobalSS 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=LAPTOP-MB5F72F2\SQLEXPRESS;Initial Catalog=ETL_GlobalSS;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package2-{1F6BC00B-B4E0-49D3-A131-9110301EC4C6}LAPTOP-MB5F72F2\SQLEXPRESS.ETL_GlobalSS 1;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\FactShipStage"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{D18EE06B-1B10-4637-B5E9-64A9F0EEFF81}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="FactShipStage"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\FactShipStage\Aggregate"
+              componentClassID="Microsoft.Aggregate"
+              contactInfo="Aggregate;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
+              description="Aggregates data with functions such as Average, Sum, Count, Max, and Min. For example, group data to compute the sum of sales per product or the average visits per day."
+              name="Aggregate"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                  name="KeyScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                  name="Keys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of distinct values in a column that the aggregation counts distinctly. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no CountDistinctScale value is used."
+                  name="CountDistinctScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of distinct values in a column that the aggregation counts distinctly. If a CountDistinctScale value is specified, the value in CountDistinctKeys takes precedence."
+                  name="CountDistinctKeys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage by which memory can be extended during the aggregation. Valid values are between 1 and 100."
+                  name="AutoExtendFactor">25</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\FactShipStage\Aggregate.Inputs[Aggregate Input 1]"
+                  name="Aggregate Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\FactShipStage\Aggregate.Inputs[Aggregate Input 1].Columns[CustomerID]"
+                      cachedDataType="r8"
+                      cachedName="CustomerID"
+                      lineageId="Package\FactShipStage\Derived Column.Outputs[Derived Column Output].Columns[CustomerID]" />
+                    <inputColumn
+                      refId="Package\FactShipStage\Aggregate.Inputs[Aggregate Input 1].Columns[LocationID]"
+                      cachedDataType="r8"
+                      cachedName="LocationID"
+                      lineageId="Package\FactShipStage\Derived Column.Outputs[Derived Column Output].Columns[LocationID]" />
+                    <inputColumn
+                      refId="Package\FactShipStage\Aggregate.Inputs[Aggregate Input 1].Columns[DepartmentID]"
+                      cachedDataType="r8"
+                      cachedName="DepartmentID"
+                      lineageId="Package\FactShipStage\Derived Column.Outputs[Derived Column Output].Columns[DepartmentID]" />
+                    <inputColumn
+                      refId="Package\FactShipStage\Aggregate.Inputs[Aggregate Input 1].Columns[OrderID]"
+                      cachedDataType="r8"
+                      cachedName="OrderID"
+                      lineageId="Package\FactShipStage\Derived Column.Outputs[Derived Column Output].Columns[OrderID]" />
+                    <inputColumn
+                      refId="Package\FactShipStage\Aggregate.Inputs[Aggregate Input 1].Columns[OrderDateKey]"
+                      cachedDataType="i4"
+                      cachedName="OrderDateKey"
+                      lineageId="Package\FactShipStage\Derived Column.Outputs[Derived Column Output].Columns[OrderDateKey]" />
+                    <inputColumn
+                      refId="Package\FactShipStage\Aggregate.Inputs[Aggregate Input 1].Columns[ShipDateKey]"
+                      cachedDataType="i4"
+                      cachedName="ShipDateKey"
+                      lineageId="Package\FactShipStage\Derived Column.Outputs[Derived Column Output].Columns[ShipDateKey]" />
+                    <inputColumn
+                      refId="Package\FactShipStage\Aggregate.Inputs[Aggregate Input 1].Columns[Scheduled]"
+                      cachedDataType="r8"
+                      cachedName="Scheduled"
+                      lineageId="Package\FactShipStage\Derived Column.Outputs[Derived Column Output].Columns[Scheduled]" />
+                    <inputColumn
+                      refId="Package\FactShipStage\Aggregate.Inputs[Aggregate Input 1].Columns[Real]"
+                      cachedDataType="r8"
+                      cachedName="Real"
+                      lineageId="Package\FactShipStage\Derived Column.Outputs[Derived Column Output].Columns[Real]" />
+                    <inputColumn
+                      refId="Package\FactShipStage\Aggregate.Inputs[Aggregate Input 1].Columns[Status]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Status"
+                      lineageId="Package\FactShipStage\Derived Column.Outputs[Derived Column Output].Columns[Status]" />
+                    <inputColumn
+                      refId="Package\FactShipStage\Aggregate.Inputs[Aggregate Input 1].Columns[Late_delivery_risk]"
+                      cachedDataType="r8"
+                      cachedName="Late_delivery_risk"
+                      lineageId="Package\FactShipStage\Derived Column.Outputs[Derived Column Output].Columns[Late_delivery_risk]" />
+                    <inputColumn
+                      refId="Package\FactShipStage\Aggregate.Inputs[Aggregate Input 1].Columns[Mode]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Mode"
+                      lineageId="Package\FactShipStage\Derived Column.Outputs[Derived Column Output].Columns[Mode]" />
+                    <inputColumn
+                      refId="Package\FactShipStage\Aggregate.Inputs[Aggregate Input 1].Columns[LongitudeDepartment]"
+                      cachedDataType="r8"
+                      cachedName="LongitudeDepartment"
+                      lineageId="Package\FactShipStage\Derived Column.Outputs[Derived Column Output].Columns[LongitudeDepartment]" />
+                    <inputColumn
+                      refId="Package\FactShipStage\Aggregate.Inputs[Aggregate Input 1].Columns[LatitudeDepartment]"
+                      cachedDataType="r8"
+                      cachedName="LatitudeDepartment"
+                      lineageId="Package\FactShipStage\Derived Column.Outputs[Derived Column Output].Columns[LatitudeDepartment]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\FactShipStage\Aggregate.Outputs[Aggregate Output 1]"
+                  name="Aggregate Output 1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                      name="KeyScale"
+                      typeConverter="KeyScaleType">0</property>
+                    <property
+                      dataType="System.Null"
+                      description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                      name="Keys" />
+                  </properties>
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FactShipStage\Aggregate.Outputs[Aggregate Output 1].Columns[CustomerID]"
+                      dataType="r8"
+                      lineageId="Package\FactShipStage\Aggregate.Outputs[Aggregate Output 1].Columns[CustomerID]"
+                      name="CustomerID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\FactShipStage\Derived Column.Outputs[Derived Column Output].Columns[CustomerID]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\FactShipStage\Aggregate.Outputs[Aggregate Output 1].Columns[Derived Column.LocationID]"
+                      dataType="r8"
+                      lineageId="Package\FactShipStage\Aggregate.Outputs[Aggregate Output 1].Columns[Derived Column.LocationID]"
+                      name="Derived Column.LocationID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\FactShipStage\Derived Column.Outputs[Derived Column Output].Columns[LocationID]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\FactShipStage\Aggregate.Outputs[Aggregate Output 1].Columns[DepartmentID]"
+                      dataType="r8"
+                      lineageId="Package\FactShipStage\Aggregate.Outputs[Aggregate Output 1].Columns[DepartmentID]"
+                      name="DepartmentID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\FactShipStage\Derived Column.Outputs[Derived Column Output].Columns[DepartmentID]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\FactShipStage\Aggregate.Outputs[Aggregate Output 1].Columns[OrderID]"
+                      dataType="r8"
+                      lineageId="Package\FactShipStage\Aggregate.Outputs[Aggregate Output 1].Columns[OrderID]"
+                      name="OrderID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\FactShipStage\Derived Column.Outputs[Derived Column Output].Columns[OrderID]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\FactShipStage\Aggregate.Outputs[Aggregate Output 1].Columns[OrderDateKey]"
+                      dataType="i4"
+                      lineageId="Package\FactShipStage\Aggregate.Outputs[Aggregate Output 1].Columns[OrderDateKey]"
+                      name="OrderDateKey">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\FactShipStage\Derived Column.Outputs[Derived Column Output].Columns[OrderDateKey]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\FactShipStage\Aggregate.Outputs[Aggregate Output 1].Columns[ShipDateKey]"
+                      dataType="i4"
+                      lineageId="Package\FactShipStage\Aggregate.Outputs[Aggregate Output 1].Columns[ShipDateKey]"
+                      name="ShipDateKey">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\FactShipStage\Derived Column.Outputs[Derived Column Output].Columns[ShipDateKey]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\FactShipStage\Aggregate.Outputs[Aggregate Output 1].Columns[Scheduled]"
+                      dataType="r8"
+                      lineageId="Package\FactShipStage\Aggregate.Outputs[Aggregate Output 1].Columns[Scheduled]"
+                      name="Scheduled">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\FactShipStage\Derived Column.Outputs[Derived Column Output].Columns[Scheduled]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\FactShipStage\Aggregate.Outputs[Aggregate Output 1].Columns[Real]"
+                      dataType="r8"
+                      lineageId="Package\FactShipStage\Aggregate.Outputs[Aggregate Output 1].Columns[Real]"
+                      name="Real">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\FactShipStage\Derived Column.Outputs[Derived Column Output].Columns[Real]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\FactShipStage\Aggregate.Outputs[Aggregate Output 1].Columns[Status]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\FactShipStage\Aggregate.Outputs[Aggregate Output 1].Columns[Status]"
+                      name="Status">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\FactShipStage\Derived Column.Outputs[Derived Column Output].Columns[Status]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\FactShipStage\Aggregate.Outputs[Aggregate Output 1].Columns[Derived Column.Late_delivery_risk]"
+                      dataType="r8"
+                      lineageId="Package\FactShipStage\Aggregate.Outputs[Aggregate Output 1].Columns[Derived Column.Late_delivery_risk]"
+                      name="Derived Column.Late_delivery_risk">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\FactShipStage\Derived Column.Outputs[Derived Column Output].Columns[Late_delivery_risk]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\FactShipStage\Aggregate.Outputs[Aggregate Output 1].Columns[Mode]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\FactShipStage\Aggregate.Outputs[Aggregate Output 1].Columns[Mode]"
+                      name="Mode">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\FactShipStage\Derived Column.Outputs[Derived Column Output].Columns[Mode]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\FactShipStage\Aggregate.Outputs[Aggregate Output 1].Columns[LongitudeDepartment]"
+                      dataType="r8"
+                      lineageId="Package\FactShipStage\Aggregate.Outputs[Aggregate Output 1].Columns[LongitudeDepartment]"
+                      name="LongitudeDepartment">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\FactShipStage\Derived Column.Outputs[Derived Column Output].Columns[LongitudeDepartment]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\FactShipStage\Aggregate.Outputs[Aggregate Output 1].Columns[LatitudeDepartment]"
+                      dataType="r8"
+                      lineageId="Package\FactShipStage\Aggregate.Outputs[Aggregate Output 1].Columns[LatitudeDepartment]"
+                      name="LatitudeDepartment">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\FactShipStage\Derived Column.Outputs[Derived Column Output].Columns[LatitudeDepartment]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\FactShipStage\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\FactShipStage\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\FactShipStage\Derived Column.Inputs[Derived Column Input].Columns[Days for shipping (real)]"
+                      cachedDataType="r8"
+                      cachedName="Days for shipping (real)"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Days for shipping (real)]" />
+                    <inputColumn
+                      refId="Package\FactShipStage\Derived Column.Inputs[Derived Column Input].Columns[Days for shipment (scheduled)]"
+                      cachedDataType="r8"
+                      cachedName="Days for shipment (scheduled)"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Days for shipment (scheduled)]" />
+                    <inputColumn
+                      refId="Package\FactShipStage\Derived Column.Inputs[Derived Column Input].Columns[Delivery Status]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Delivery Status"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Delivery Status]" />
+                    <inputColumn
+                      refId="Package\FactShipStage\Derived Column.Inputs[Derived Column Input].Columns[Late_delivery_risk]"
+                      cachedDataType="r8"
+                      cachedName="Late_delivery_risk"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Late_delivery_risk]" />
+                    <inputColumn
+                      refId="Package\FactShipStage\Derived Column.Inputs[Derived Column Input].Columns[Customer Id]"
+                      cachedDataType="r8"
+                      cachedName="Customer Id"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Customer Id]" />
+                    <inputColumn
+                      refId="Package\FactShipStage\Derived Column.Inputs[Derived Column Input].Columns[Department Id]"
+                      cachedDataType="r8"
+                      cachedName="Department Id"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Department Id]" />
+                    <inputColumn
+                      refId="Package\FactShipStage\Derived Column.Inputs[Derived Column Input].Columns[order date (DateOrders)]"
+                      cachedDataType="date"
+                      cachedName="order date (DateOrders)"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[order date (DateOrders)]" />
+                    <inputColumn
+                      refId="Package\FactShipStage\Derived Column.Inputs[Derived Column Input].Columns[Order Id]"
+                      cachedDataType="r8"
+                      cachedName="Order Id"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Order Id]" />
+                    <inputColumn
+                      refId="Package\FactShipStage\Derived Column.Inputs[Derived Column Input].Columns[shipping date (DateOrders)]"
+                      cachedDataType="date"
+                      cachedName="shipping date (DateOrders)"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[shipping date (DateOrders)]" />
+                    <inputColumn
+                      refId="Package\FactShipStage\Derived Column.Inputs[Derived Column Input].Columns[Shipping Mode]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Shipping Mode"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Shipping Mode]" />
+                    <inputColumn
+                      refId="Package\FactShipStage\Derived Column.Inputs[Derived Column Input].Columns[LocationID]"
+                      cachedDataType="r8"
+                      cachedName="LocationID"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[LocationID]" />
+                    <inputColumn
+                      refId="Package\FactShipStage\Derived Column.Inputs[Derived Column Input].Columns[Latitude]"
+                      cachedDataType="r8"
+                      cachedName="Latitude"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Latitude]" />
+                    <inputColumn
+                      refId="Package\FactShipStage\Derived Column.Inputs[Derived Column Input].Columns[Longitude]"
+                      cachedDataType="r8"
+                      cachedName="Longitude"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Longitude]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\FactShipStage\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\FactShipStage\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FactShipStage\Derived Column.Outputs[Derived Column Output].Columns[CustomerID]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\FactShipStage\Derived Column.Outputs[Derived Column Output].Columns[CustomerID]"
+                      name="CustomerID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Customer Id]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">[Customer Id]</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\FactShipStage\Derived Column.Outputs[Derived Column Output].Columns[LocationID]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\FactShipStage\Derived Column.Outputs[Derived Column Output].Columns[LocationID]"
+                      name="LocationID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[LocationID]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">LocationID</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\FactShipStage\Derived Column.Outputs[Derived Column Output].Columns[DepartmentID]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\FactShipStage\Derived Column.Outputs[Derived Column Output].Columns[DepartmentID]"
+                      name="DepartmentID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Department Id]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">[Department Id]</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\FactShipStage\Derived Column.Outputs[Derived Column Output].Columns[OrderID]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\FactShipStage\Derived Column.Outputs[Derived Column Output].Columns[OrderID]"
+                      name="OrderID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Order Id]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">[Order Id]</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\FactShipStage\Derived Column.Outputs[Derived Column Output].Columns[OrderDateKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\FactShipStage\Derived Column.Outputs[Derived Column Output].Columns[OrderDateKey]"
+                      name="OrderDateKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[DAY](#{Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[order date (DateOrders)]}) + [MONTH](#{Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[order date (DateOrders)]}) * 100 + [YEAR](#{Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[order date (DateOrders)]}) * 10000</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">DAY([order date (DateOrders)]) + MONTH([order date (DateOrders)]) * 100 + YEAR([order date (DateOrders)]) * 10000</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\FactShipStage\Derived Column.Outputs[Derived Column Output].Columns[ShipDateKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\FactShipStage\Derived Column.Outputs[Derived Column Output].Columns[ShipDateKey]"
+                      name="ShipDateKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[DAY](#{Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[shipping date (DateOrders)]}) + [MONTH](#{Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[shipping date (DateOrders)]}) * 100 + [YEAR](#{Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[shipping date (DateOrders)]}) * 10000</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">DAY([shipping date (DateOrders)]) + MONTH([shipping date (DateOrders)]) * 100 + YEAR([shipping date (DateOrders)]) * 10000</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\FactShipStage\Derived Column.Outputs[Derived Column Output].Columns[Scheduled]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\FactShipStage\Derived Column.Outputs[Derived Column Output].Columns[Scheduled]"
+                      name="Scheduled"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Days for shipment (scheduled)]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">[Days for shipment (scheduled)]</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\FactShipStage\Derived Column.Outputs[Derived Column Output].Columns[Real]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\FactShipStage\Derived Column.Outputs[Derived Column Output].Columns[Real]"
+                      name="Real"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Days for shipping (real)]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">[Days for shipping (real)]</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\FactShipStage\Derived Column.Outputs[Derived Column Output].Columns[Status]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\FactShipStage\Derived Column.Outputs[Derived Column Output].Columns[Status]"
+                      name="Status"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Delivery Status]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">[Delivery Status]</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\FactShipStage\Derived Column.Outputs[Derived Column Output].Columns[Late_delivery_risk]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\FactShipStage\Derived Column.Outputs[Derived Column Output].Columns[Late_delivery_risk]"
+                      name="Late_delivery_risk"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Late_delivery_risk]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">Late_delivery_risk</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\FactShipStage\Derived Column.Outputs[Derived Column Output].Columns[Mode]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\FactShipStage\Derived Column.Outputs[Derived Column Output].Columns[Mode]"
+                      name="Mode"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Shipping Mode]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">[Shipping Mode]</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\FactShipStage\Derived Column.Outputs[Derived Column Output].Columns[LongitudeDepartment]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\FactShipStage\Derived Column.Outputs[Derived Column Output].Columns[LongitudeDepartment]"
+                      name="LongitudeDepartment"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Longitude]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">Longitude</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\FactShipStage\Derived Column.Outputs[Derived Column Output].Columns[LatitudeDepartment]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\FactShipStage\Derived Column.Outputs[Derived Column Output].Columns[LatitudeDepartment]"
+                      name="LatitudeDepartment"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Latitude]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">Latitude</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\FactShipStage\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\FactShipStage\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FactShipStage\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\FactShipStage\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\FactShipStage\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\FactShipStage\Excel Source"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Excel Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">new$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\FactShipStage\Excel Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[F1]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[F1]"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[F1]"
+                      name="F1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Type]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Type]"
+                      length="255"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Type]"
+                      name="Type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Days for shipping (real)]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Days for shipping (real)]"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Days for shipping (real)]"
+                      name="Days for shipping (real)"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Days for shipment (scheduled)]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Days for shipment (scheduled)]"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Days for shipment (scheduled)]"
+                      name="Days for shipment (scheduled)"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Benefit per order]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Benefit per order]"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Benefit per order]"
+                      name="Benefit per order"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Sales per customer]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Sales per customer]"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Sales per customer]"
+                      name="Sales per customer"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Delivery Status]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Delivery Status]"
+                      length="255"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Delivery Status]"
+                      name="Delivery Status"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Late_delivery_risk]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Late_delivery_risk]"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Late_delivery_risk]"
+                      name="Late_delivery_risk"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Category Id]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Category Id]"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Category Id]"
+                      name="Category Id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Category Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Category Name]"
+                      length="255"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Category Name]"
+                      name="Category Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Customer City]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Customer City]"
+                      length="255"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Customer City]"
+                      name="Customer City"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Customer Country]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Customer Country]"
+                      length="255"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Customer Country]"
+                      name="Customer Country"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Customer Email]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Customer Email]"
+                      length="255"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Customer Email]"
+                      name="Customer Email"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Customer Fname]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Customer Fname]"
+                      length="255"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Customer Fname]"
+                      name="Customer Fname"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Customer Id]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Customer Id]"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Customer Id]"
+                      name="Customer Id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Customer Lname]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Customer Lname]"
+                      length="255"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Customer Lname]"
+                      name="Customer Lname"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Customer Password]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Customer Password]"
+                      length="255"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Customer Password]"
+                      name="Customer Password"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Customer Segment]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Customer Segment]"
+                      length="255"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Customer Segment]"
+                      name="Customer Segment"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Customer State]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Customer State]"
+                      length="255"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Customer State]"
+                      name="Customer State"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Customer Street]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Customer Street]"
+                      length="255"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Customer Street]"
+                      name="Customer Street"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Customer Zipcode]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Customer Zipcode]"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Customer Zipcode]"
+                      name="Customer Zipcode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Department Id]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Department Id]"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Department Id]"
+                      name="Department Id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Department Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Department Name]"
+                      length="255"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Department Name]"
+                      name="Department Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Latitude]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Latitude]"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Latitude]"
+                      name="Latitude"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Longitude]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Longitude]"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Longitude]"
+                      name="Longitude"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Market]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Market]"
+                      length="255"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Market]"
+                      name="Market"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Order City]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order City]"
+                      length="255"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Order City]"
+                      name="Order City"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Order Country]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order Country]"
+                      length="255"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Order Country]"
+                      name="Order Country"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Order Customer Id]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order Customer Id]"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Order Customer Id]"
+                      name="Order Customer Id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[order date (DateOrders)]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[order date (DateOrders)]"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[order date (DateOrders)]"
+                      name="order date (DateOrders)"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Order Id]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order Id]"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Order Id]"
+                      name="Order Id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Order Item Cardprod Id]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order Item Cardprod Id]"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Order Item Cardprod Id]"
+                      name="Order Item Cardprod Id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Order Item Discount]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order Item Discount]"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Order Item Discount]"
+                      name="Order Item Discount"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Order Item Discount Rate]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order Item Discount Rate]"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Order Item Discount Rate]"
+                      name="Order Item Discount Rate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Order Item Id]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order Item Id]"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Order Item Id]"
+                      name="Order Item Id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Order Item Product Price]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order Item Product Price]"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Order Item Product Price]"
+                      name="Order Item Product Price"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Order Item Profit Ratio]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order Item Profit Ratio]"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Order Item Profit Ratio]"
+                      name="Order Item Profit Ratio"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Order Item Quantity]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order Item Quantity]"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Order Item Quantity]"
+                      name="Order Item Quantity"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Sales]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Sales]"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Sales]"
+                      name="Sales"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Order Item Total]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order Item Total]"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Order Item Total]"
+                      name="Order Item Total"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Order Profit Per Order]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order Profit Per Order]"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Order Profit Per Order]"
+                      name="Order Profit Per Order"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Order Region]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order Region]"
+                      length="255"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Order Region]"
+                      name="Order Region"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Order State]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order State]"
+                      length="255"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Order State]"
+                      name="Order State"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Order Status]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order Status]"
+                      length="255"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Order Status]"
+                      name="Order Status"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Order Zipcode]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order Zipcode]"
+                      length="255"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Order Zipcode]"
+                      name="Order Zipcode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Product Card Id]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Product Card Id]"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Product Card Id]"
+                      name="Product Card Id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Product Category Id]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Product Category Id]"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Product Category Id]"
+                      name="Product Category Id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Product Description]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Product Description]"
+                      length="255"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Product Description]"
+                      name="Product Description"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Product Image]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Product Image]"
+                      length="255"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Product Image]"
+                      name="Product Image"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Product Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Product Name]"
+                      length="255"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Product Name]"
+                      name="Product Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Product Price]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Product Price]"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Product Price]"
+                      name="Product Price"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Product Status]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Product Status]"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Product Status]"
+                      name="Product Status"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[shipping date (DateOrders)]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[shipping date (DateOrders)]"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[shipping date (DateOrders)]"
+                      name="shipping date (DateOrders)"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Shipping Mode]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Shipping Mode]"
+                      length="255"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[Shipping Mode]"
+                      name="Shipping Mode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[LocationID]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[LocationID]"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].Columns[LocationID]"
+                      name="LocationID"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[F1]"
+                      dataType="r8"
+                      name="F1" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Type]"
+                      dataType="wstr"
+                      length="255"
+                      name="Type" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Days for shipping (real)]"
+                      dataType="r8"
+                      name="Days for shipping (real)" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Days for shipment (scheduled)]"
+                      dataType="r8"
+                      name="Days for shipment (scheduled)" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Benefit per order]"
+                      dataType="r8"
+                      name="Benefit per order" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Sales per customer]"
+                      dataType="r8"
+                      name="Sales per customer" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Delivery Status]"
+                      dataType="wstr"
+                      length="255"
+                      name="Delivery Status" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Late_delivery_risk]"
+                      dataType="r8"
+                      name="Late_delivery_risk" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Category Id]"
+                      dataType="r8"
+                      name="Category Id" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Category Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Category Name" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Customer City]"
+                      dataType="wstr"
+                      length="255"
+                      name="Customer City" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Customer Country]"
+                      dataType="wstr"
+                      length="255"
+                      name="Customer Country" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Customer Email]"
+                      dataType="wstr"
+                      length="255"
+                      name="Customer Email" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Customer Fname]"
+                      dataType="wstr"
+                      length="255"
+                      name="Customer Fname" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Customer Id]"
+                      dataType="r8"
+                      name="Customer Id" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Customer Lname]"
+                      dataType="wstr"
+                      length="255"
+                      name="Customer Lname" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Customer Password]"
+                      dataType="wstr"
+                      length="255"
+                      name="Customer Password" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Customer Segment]"
+                      dataType="wstr"
+                      length="255"
+                      name="Customer Segment" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Customer State]"
+                      dataType="wstr"
+                      length="255"
+                      name="Customer State" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Customer Street]"
+                      dataType="wstr"
+                      length="255"
+                      name="Customer Street" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Customer Zipcode]"
+                      dataType="r8"
+                      name="Customer Zipcode" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Department Id]"
+                      dataType="r8"
+                      name="Department Id" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Department Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Department Name" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Latitude]"
+                      dataType="r8"
+                      name="Latitude" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Longitude]"
+                      dataType="r8"
+                      name="Longitude" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Market]"
+                      dataType="wstr"
+                      length="255"
+                      name="Market" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order City]"
+                      dataType="wstr"
+                      length="255"
+                      name="Order City" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order Country]"
+                      dataType="wstr"
+                      length="255"
+                      name="Order Country" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order Customer Id]"
+                      dataType="r8"
+                      name="Order Customer Id" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[order date (DateOrders)]"
+                      dataType="date"
+                      name="order date (DateOrders)" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order Id]"
+                      dataType="r8"
+                      name="Order Id" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order Item Cardprod Id]"
+                      dataType="r8"
+                      name="Order Item Cardprod Id" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order Item Discount]"
+                      dataType="r8"
+                      name="Order Item Discount" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order Item Discount Rate]"
+                      dataType="r8"
+                      name="Order Item Discount Rate" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order Item Id]"
+                      dataType="r8"
+                      name="Order Item Id" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order Item Product Price]"
+                      dataType="r8"
+                      name="Order Item Product Price" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order Item Profit Ratio]"
+                      dataType="r8"
+                      name="Order Item Profit Ratio" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order Item Quantity]"
+                      dataType="r8"
+                      name="Order Item Quantity" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Sales]"
+                      dataType="r8"
+                      name="Sales" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order Item Total]"
+                      dataType="r8"
+                      name="Order Item Total" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order Profit Per Order]"
+                      dataType="r8"
+                      name="Order Profit Per Order" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order Region]"
+                      dataType="wstr"
+                      length="255"
+                      name="Order Region" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order State]"
+                      dataType="wstr"
+                      length="255"
+                      name="Order State" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order Status]"
+                      dataType="wstr"
+                      length="255"
+                      name="Order Status" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Order Zipcode]"
+                      dataType="wstr"
+                      length="255"
+                      name="Order Zipcode" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Product Card Id]"
+                      dataType="r8"
+                      name="Product Card Id" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Product Category Id]"
+                      dataType="r8"
+                      name="Product Category Id" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Product Description]"
+                      dataType="wstr"
+                      length="255"
+                      name="Product Description" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Product Image]"
+                      dataType="wstr"
+                      length="255"
+                      name="Product Image" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Product Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Product Name" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Product Price]"
+                      dataType="r8"
+                      name="Product Price" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Product Status]"
+                      dataType="r8"
+                      name="Product Status" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[shipping date (DateOrders)]"
+                      dataType="date"
+                      name="shipping date (DateOrders)" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[Shipping Mode]"
+                      dataType="wstr"
+                      length="255"
+                      name="Shipping Mode" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output].ExternalColumns[LocationID]"
+                      dataType="r8"
+                      name="LocationID" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[F1]"
+                      dataType="r8"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[F1]"
+                      name="F1" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Type]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Type]"
+                      name="Type" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Days for shipping (real)]"
+                      dataType="r8"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Days for shipping (real)]"
+                      name="Days for shipping (real)" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Days for shipment (scheduled)]"
+                      dataType="r8"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Days for shipment (scheduled)]"
+                      name="Days for shipment (scheduled)" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Benefit per order]"
+                      dataType="r8"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Benefit per order]"
+                      name="Benefit per order" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Sales per customer]"
+                      dataType="r8"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Sales per customer]"
+                      name="Sales per customer" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Delivery Status]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Delivery Status]"
+                      name="Delivery Status" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Late_delivery_risk]"
+                      dataType="r8"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Late_delivery_risk]"
+                      name="Late_delivery_risk" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Category Id]"
+                      dataType="r8"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Category Id]"
+                      name="Category Id" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Category Name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Category Name]"
+                      name="Category Name" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Customer City]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Customer City]"
+                      name="Customer City" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Customer Country]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Customer Country]"
+                      name="Customer Country" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Customer Email]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Customer Email]"
+                      name="Customer Email" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Customer Fname]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Customer Fname]"
+                      name="Customer Fname" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Customer Id]"
+                      dataType="r8"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Customer Id]"
+                      name="Customer Id" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Customer Lname]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Customer Lname]"
+                      name="Customer Lname" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Customer Password]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Customer Password]"
+                      name="Customer Password" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Customer Segment]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Customer Segment]"
+                      name="Customer Segment" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Customer State]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Customer State]"
+                      name="Customer State" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Customer Street]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Customer Street]"
+                      name="Customer Street" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Customer Zipcode]"
+                      dataType="r8"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Customer Zipcode]"
+                      name="Customer Zipcode" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Department Id]"
+                      dataType="r8"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Department Id]"
+                      name="Department Id" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Department Name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Department Name]"
+                      name="Department Name" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Latitude]"
+                      dataType="r8"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Latitude]"
+                      name="Latitude" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Longitude]"
+                      dataType="r8"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Longitude]"
+                      name="Longitude" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Market]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Market]"
+                      name="Market" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order City]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order City]"
+                      name="Order City" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order Country]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order Country]"
+                      name="Order Country" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order Customer Id]"
+                      dataType="r8"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order Customer Id]"
+                      name="Order Customer Id" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[order date (DateOrders)]"
+                      dataType="date"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[order date (DateOrders)]"
+                      name="order date (DateOrders)" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order Id]"
+                      dataType="r8"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order Id]"
+                      name="Order Id" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order Item Cardprod Id]"
+                      dataType="r8"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order Item Cardprod Id]"
+                      name="Order Item Cardprod Id" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order Item Discount]"
+                      dataType="r8"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order Item Discount]"
+                      name="Order Item Discount" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order Item Discount Rate]"
+                      dataType="r8"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order Item Discount Rate]"
+                      name="Order Item Discount Rate" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order Item Id]"
+                      dataType="r8"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order Item Id]"
+                      name="Order Item Id" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order Item Product Price]"
+                      dataType="r8"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order Item Product Price]"
+                      name="Order Item Product Price" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order Item Profit Ratio]"
+                      dataType="r8"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order Item Profit Ratio]"
+                      name="Order Item Profit Ratio" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order Item Quantity]"
+                      dataType="r8"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order Item Quantity]"
+                      name="Order Item Quantity" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Sales]"
+                      dataType="r8"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Sales]"
+                      name="Sales" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order Item Total]"
+                      dataType="r8"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order Item Total]"
+                      name="Order Item Total" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order Profit Per Order]"
+                      dataType="r8"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order Profit Per Order]"
+                      name="Order Profit Per Order" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order Region]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order Region]"
+                      name="Order Region" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order State]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order State]"
+                      name="Order State" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order Status]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order Status]"
+                      name="Order Status" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order Zipcode]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Order Zipcode]"
+                      name="Order Zipcode" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Product Card Id]"
+                      dataType="r8"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Product Card Id]"
+                      name="Product Card Id" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Product Category Id]"
+                      dataType="r8"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Product Category Id]"
+                      name="Product Category Id" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Product Description]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Product Description]"
+                      name="Product Description" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Product Image]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Product Image]"
+                      name="Product Image" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Product Name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Product Name]"
+                      name="Product Name" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Product Price]"
+                      dataType="r8"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Product Price]"
+                      name="Product Price" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Product Status]"
+                      dataType="r8"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Product Status]"
+                      name="Product Status" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[shipping date (DateOrders)]"
+                      dataType="date"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[shipping date (DateOrders)]"
+                      name="shipping date (DateOrders)" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Shipping Mode]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[Shipping Mode]"
+                      name="Shipping Mode" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[LocationID]"
+                      dataType="r8"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[LocationID]"
+                      name="LocationID" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\FactShipStage\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\FactShipStage\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[FactShipStage]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\FactShipStage\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-MB5F72F2\SQLEXPRESS.ETL_GlobalSS 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-MB5F72F2\SQLEXPRESS.ETL_GlobalSS 1]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\FactShipStage\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\FactShipStage\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CustomerID]"
+                      cachedDataType="r8"
+                      cachedName="CustomerID"
+                      externalMetadataColumnId="Package\FactShipStage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerID]"
+                      lineageId="Package\FactShipStage\Aggregate.Outputs[Aggregate Output 1].Columns[CustomerID]" />
+                    <inputColumn
+                      refId="Package\FactShipStage\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DepartmentID]"
+                      cachedDataType="r8"
+                      cachedName="DepartmentID"
+                      externalMetadataColumnId="Package\FactShipStage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DepartmentID]"
+                      lineageId="Package\FactShipStage\Aggregate.Outputs[Aggregate Output 1].Columns[DepartmentID]" />
+                    <inputColumn
+                      refId="Package\FactShipStage\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[OrderID]"
+                      cachedDataType="r8"
+                      cachedName="OrderID"
+                      externalMetadataColumnId="Package\FactShipStage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OrderID]"
+                      lineageId="Package\FactShipStage\Aggregate.Outputs[Aggregate Output 1].Columns[OrderID]" />
+                    <inputColumn
+                      refId="Package\FactShipStage\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[OrderDateKey]"
+                      cachedDataType="i4"
+                      cachedName="OrderDateKey"
+                      externalMetadataColumnId="Package\FactShipStage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OrderDateKey]"
+                      lineageId="Package\FactShipStage\Aggregate.Outputs[Aggregate Output 1].Columns[OrderDateKey]" />
+                    <inputColumn
+                      refId="Package\FactShipStage\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ShipDateKey]"
+                      cachedDataType="i4"
+                      cachedName="ShipDateKey"
+                      externalMetadataColumnId="Package\FactShipStage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ShipDateKey]"
+                      lineageId="Package\FactShipStage\Aggregate.Outputs[Aggregate Output 1].Columns[ShipDateKey]" />
+                    <inputColumn
+                      refId="Package\FactShipStage\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Scheduled]"
+                      cachedDataType="r8"
+                      cachedName="Scheduled"
+                      externalMetadataColumnId="Package\FactShipStage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Scheduled]"
+                      lineageId="Package\FactShipStage\Aggregate.Outputs[Aggregate Output 1].Columns[Scheduled]" />
+                    <inputColumn
+                      refId="Package\FactShipStage\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Real]"
+                      cachedDataType="r8"
+                      cachedName="Real"
+                      externalMetadataColumnId="Package\FactShipStage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Real]"
+                      lineageId="Package\FactShipStage\Aggregate.Outputs[Aggregate Output 1].Columns[Real]" />
+                    <inputColumn
+                      refId="Package\FactShipStage\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Status]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Status"
+                      externalMetadataColumnId="Package\FactShipStage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Status]"
+                      lineageId="Package\FactShipStage\Aggregate.Outputs[Aggregate Output 1].Columns[Status]" />
+                    <inputColumn
+                      refId="Package\FactShipStage\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Mode]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Mode"
+                      externalMetadataColumnId="Package\FactShipStage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Mode]"
+                      lineageId="Package\FactShipStage\Aggregate.Outputs[Aggregate Output 1].Columns[Mode]" />
+                    <inputColumn
+                      refId="Package\FactShipStage\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Derived Column.Late_delivery_risk]"
+                      cachedDataType="r8"
+                      cachedName="Derived Column.Late_delivery_risk"
+                      externalMetadataColumnId="Package\FactShipStage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Late_delivery_risk]"
+                      lineageId="Package\FactShipStage\Aggregate.Outputs[Aggregate Output 1].Columns[Derived Column.Late_delivery_risk]" />
+                    <inputColumn
+                      refId="Package\FactShipStage\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Derived Column.LocationID]"
+                      cachedDataType="r8"
+                      cachedName="Derived Column.LocationID"
+                      externalMetadataColumnId="Package\FactShipStage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LocationID]"
+                      lineageId="Package\FactShipStage\Aggregate.Outputs[Aggregate Output 1].Columns[Derived Column.LocationID]" />
+                    <inputColumn
+                      refId="Package\FactShipStage\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[LongitudeDepartment]"
+                      cachedDataType="r8"
+                      cachedName="LongitudeDepartment"
+                      externalMetadataColumnId="Package\FactShipStage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LongitudeDepartment]"
+                      lineageId="Package\FactShipStage\Aggregate.Outputs[Aggregate Output 1].Columns[LongitudeDepartment]" />
+                    <inputColumn
+                      refId="Package\FactShipStage\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[LatitudeDepartment]"
+                      cachedDataType="r8"
+                      cachedName="LatitudeDepartment"
+                      externalMetadataColumnId="Package\FactShipStage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LatitudeDepartment]"
+                      lineageId="Package\FactShipStage\Aggregate.Outputs[Aggregate Output 1].Columns[LatitudeDepartment]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OrderID]"
+                      dataType="r8"
+                      name="OrderID" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerID]"
+                      dataType="r8"
+                      name="CustomerID" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LocationID]"
+                      dataType="r8"
+                      name="LocationID" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DepartmentID]"
+                      dataType="r8"
+                      name="DepartmentID" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OrderDateKey]"
+                      dataType="i4"
+                      name="OrderDateKey" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ShipDateKey]"
+                      dataType="i4"
+                      name="ShipDateKey" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Scheduled]"
+                      dataType="r8"
+                      name="Scheduled" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Real]"
+                      dataType="r8"
+                      name="Real" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Status]"
+                      dataType="wstr"
+                      length="255"
+                      name="Status" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Late_delivery_risk]"
+                      dataType="r8"
+                      name="Late_delivery_risk" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Mode]"
+                      dataType="wstr"
+                      length="255"
+                      name="Mode" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LongitudeDepartment]"
+                      dataType="r8"
+                      name="LongitudeDepartment" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipStage\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LatitudeDepartment]"
+                      dataType="r8"
+                      name="LatitudeDepartment" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\FactShipStage\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\FactShipStage\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FactShipStage\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\FactShipStage\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\FactShipStage\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\FactShipStage\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\FactShipStage.Paths[Aggregate Output 1]"
+              endId="Package\FactShipStage\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Aggregate Output 1"
+              startId="Package\FactShipStage\Aggregate.Outputs[Aggregate Output 1]" />
+            <path
+              refId="Package\FactShipStage.Paths[Derived Column Output]"
+              endId="Package\FactShipStage\Aggregate.Inputs[Aggregate Input 1]"
+              name="Derived Column Output"
+              startId="Package\FactShipStage\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\FactShipStage.Paths[Excel Source Output]"
+              endId="Package\FactShipStage\Derived Column.Inputs[Derived Column Input]"
+              name="Excel Source Output"
+              startId="Package\FactShipStage\Excel Source.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="144.8,41.6"
+          Id="Package\FactShipStage"
+          TopLeft="63.5714296540436,32.8823534023391" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\FactShipStage">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="138.4,41.6"
+          Id="Package\FactShipStage\Excel Source"
+          TopLeft="47.8571436721452,39.0000005469603" />
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\FactShipStage\Derived Column"
+          TopLeft="222.142860925927,39.7647064400379" />
+        <EdgeLayout
+          Id="Package\FactShipStage.Paths[Excel Source Output]"
+          TopLeft="186.257143672145,60.1823534934991">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="35.8857172537823,0"
+              Start="0,0"
+              End="28.3857172537823,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="28.3857172537823,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="126.4,41.6"
+          Id="Package\FactShipStage\Aggregate"
+          TopLeft="422.857150058357,39.0000005469603" />
+        <EdgeLayout
+          Id="Package\FactShipStage.Paths[Derived Column Output]"
+          TopLeft="374.942860925927,60.1823534934991">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="47.9142891324299,0"
+              Start="0,0"
+              End="40.4142891324299,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="40.4142891324299,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\FactShipStage\OLE DB Destination"
+          TopLeft="595.71429585924,39.7647064400379" />
+        <EdgeLayout
+          Id="Package\FactShipStage.Paths[Aggregate Output 1]"
+          TopLeft="549.257150058357,60.1823534934991">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="46.4571458008827,0"
+              Start="0,0"
+              End="38.9571458008827,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="38.9571458008827,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\FactShipStage\Excel Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\FactShipStage\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

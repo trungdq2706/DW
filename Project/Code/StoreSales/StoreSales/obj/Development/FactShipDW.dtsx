@@ -1,0 +1,401 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/10/2023 11:44:18 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LAPTOP-MB5F72F2"
+  DTS:CreatorName="LAPTOP-MB5F72F2\ASUS"
+  DTS:DTSID="{A9190D5A-9C55-4ED4-9354-9993B2D24A09}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5035.3"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package2"
+  DTS:PackageType="5"
+  DTS:VersionBuild="5"
+  DTS:VersionGUID="{CE90ECC3-18F5-428A-854E-ED29006CE0F9}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LAPTOP-MB5F72F2\SQLEXPRESS.ETL_GlobalSS]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{A4B6F14C-4C41-4047-9086-E9975F49FE34}"
+      DTS:ObjectName="LAPTOP-MB5F72F2\SQLEXPRESS.ETL_GlobalSS">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=LAPTOP-MB5F72F2\SQLEXPRESS;Initial Catalog=ETL_GlobalSS;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LAPTOP-MB5F72F2\SQLEXPRESS.StoreSalesDW]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{37C8C146-AFE6-49DE-A99E-735EE7B9B96B}"
+      DTS:ObjectName="LAPTOP-MB5F72F2\SQLEXPRESS.StoreSalesDW">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=LAPTOP-MB5F72F2\SQLEXPRESS;Initial Catalog=StoreSalesDW;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\FactShipDW"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{92CB8C04-18F2-4CB9-ACEE-52401D19BFFF}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="FactShipDW"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\FactShipDW\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT dbo.DimCustomer.CustomerKey, dbo.DimLocation.LocationKey, dbo.DimDepartment.DepartmentKey, dbo.FactDeliveryStage.OrderDateKey, dbo.FactDeliveryStage.ShipDateKey, dbo.FactDeliveryStage.Scheduled, 
+                  dbo.FactDeliveryStage."Real", dbo.FactDeliveryStage.Status, dbo.FactDeliveryStage.Late_delivery_risk, dbo.FactDeliveryStage.Mode, dbo.DimCategory.CategoryKey
+FROM     dbo.FactDeliveryStage, dbo.DimLocation, dbo.DimDepartment, dbo.DimCustomer, dbo.DimCategory
+WHERE  dbo.FactDeliveryStage.LocationID = dbo.DimLocation.LocationID AND dbo.FactDeliveryStage.DepartmentID = dbo.DimDepartment.DepartmentID AND dbo.FactDeliveryStage.LatitudeDepartment = dbo.DimDepartment.Latitude AND 
+                  dbo.FactDeliveryStage.LongitudeDepartment = dbo.DimDepartment.Longtitude AND dbo.FactDeliveryStage.CustomerID = dbo.DimCustomer.CustomerID AND dbo.FactDeliveryStage.CategoryID = dbo.DimCategory.CategoryID</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\FactShipDW\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-MB5F72F2\SQLEXPRESS.ETL_GlobalSS]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-MB5F72F2\SQLEXPRESS.ETL_GlobalSS]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Output].Columns[CustomerKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CustomerKey]"
+                      lineageId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Output].Columns[CustomerKey]"
+                      name="CustomerKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Output].Columns[LocationKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[LocationKey]"
+                      lineageId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Output].Columns[LocationKey]"
+                      name="LocationKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Output].Columns[DepartmentKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DepartmentKey]"
+                      lineageId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Output].Columns[DepartmentKey]"
+                      name="DepartmentKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Output].Columns[OrderDateKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[OrderDateKey]"
+                      lineageId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Output].Columns[OrderDateKey]"
+                      name="OrderDateKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Output].Columns[ShipDateKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ShipDateKey]"
+                      lineageId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Output].Columns[ShipDateKey]"
+                      name="ShipDateKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Scheduled]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Scheduled]"
+                      lineageId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Scheduled]"
+                      name="Scheduled"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Real]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Real]"
+                      lineageId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Real]"
+                      name="Real"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Status]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Status]"
+                      length="255"
+                      lineageId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Status]"
+                      name="Status"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Late_delivery_risk]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Late_delivery_risk]"
+                      lineageId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Late_delivery_risk]"
+                      name="Late_delivery_risk"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Mode]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Mode]"
+                      length="255"
+                      lineageId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Output].Columns[Mode]"
+                      name="Mode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Output].Columns[CategoryKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CategoryKey]"
+                      lineageId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Output].Columns[CategoryKey]"
+                      name="CategoryKey"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CustomerKey]"
+                      dataType="i4"
+                      name="CustomerKey" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[LocationKey]"
+                      dataType="i4"
+                      name="LocationKey" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DepartmentKey]"
+                      dataType="i4"
+                      name="DepartmentKey" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[OrderDateKey]"
+                      dataType="i4"
+                      name="OrderDateKey" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ShipDateKey]"
+                      dataType="i4"
+                      name="ShipDateKey" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Scheduled]"
+                      dataType="r8"
+                      name="Scheduled" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Real]"
+                      dataType="r8"
+                      name="Real" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Status]"
+                      dataType="wstr"
+                      length="255"
+                      name="Status" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Late_delivery_risk]"
+                      dataType="r8"
+                      name="Late_delivery_risk" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Mode]"
+                      dataType="wstr"
+                      length="255"
+                      name="Mode" />
+                    <externalMetadataColumn
+                      refId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CategoryKey]"
+                      dataType="i4"
+                      name="CategoryKey" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CustomerKey]"
+                      dataType="i4"
+                      lineageId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CustomerKey]"
+                      name="CustomerKey" />
+                    <outputColumn
+                      refId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[LocationKey]"
+                      dataType="i4"
+                      lineageId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[LocationKey]"
+                      name="LocationKey" />
+                    <outputColumn
+                      refId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DepartmentKey]"
+                      dataType="i4"
+                      lineageId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DepartmentKey]"
+                      name="DepartmentKey" />
+                    <outputColumn
+                      refId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[OrderDateKey]"
+                      dataType="i4"
+                      lineageId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[OrderDateKey]"
+                      name="OrderDateKey" />
+                    <outputColumn
+                      refId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ShipDateKey]"
+                      dataType="i4"
+                      lineageId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ShipDateKey]"
+                      name="ShipDateKey" />
+                    <outputColumn
+                      refId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Scheduled]"
+                      dataType="r8"
+                      lineageId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Scheduled]"
+                      name="Scheduled" />
+                    <outputColumn
+                      refId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Real]"
+                      dataType="r8"
+                      lineageId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Real]"
+                      name="Real" />
+                    <outputColumn
+                      refId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Status]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Status]"
+                      name="Status" />
+                    <outputColumn
+                      refId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Late_delivery_risk]"
+                      dataType="r8"
+                      lineageId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Late_delivery_risk]"
+                      name="Late_delivery_risk" />
+                    <outputColumn
+                      refId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Mode]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Mode]"
+                      name="Mode" />
+                    <outputColumn
+                      refId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CategoryKey]"
+                      dataType="i4"
+                      lineageId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CategoryKey]"
+                      name="CategoryKey" />
+                    <outputColumn
+                      refId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\FactShipDW\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="135.2,41.6"
+          Id="Package\FactShipDW"
+          TopLeft="52.1428580308447,65.7647068046781" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\FactShipDW">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="149.6,41.6"
+          Id="Package\FactShipDW\OLE DB Source"
+          TopLeft="37.8571435018462,31.3529416161838" />
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\FactShipDW\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
